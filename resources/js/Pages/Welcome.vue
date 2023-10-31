@@ -1,5 +1,10 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+
+defineProps({
+    bookmarks: Object
+});
+
 </script>
 
 <template>
@@ -8,7 +13,7 @@ import { Head, Link } from '@inertiajs/vue3';
     <header class="p-2 bg-gray-100 flex justify-between">
 
         <div>
-            <h1 class="font-black text-2xl text-blue-600">ri.cu.s</h1>
+            <h1 class="font-black text-3xl text-blue-600">ri.cu.s</h1>
         </div>
 
         <div>
@@ -23,7 +28,10 @@ import { Head, Link } from '@inertiajs/vue3';
 
         <div class="content w-5/6">
 
-            <p>contenido</p>
+            <ul class="pl-3">
+                <li v-for="bookmark in bookmarks.data"><a class="text-lg text-blue-600" :href="`${bookmark.uri}`">{{ bookmark.title}}</a></li>
+            </ul>
+
 
         </div>
 

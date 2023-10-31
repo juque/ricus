@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bookmark;
 
 class WelcomeController extends Controller
 {
@@ -11,6 +12,9 @@ class WelcomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return inertia()->render('Welcome');
+        $bookmarks = Bookmark::paginate(10);
+        return inertia()->render('Welcome', [
+          'bookmarks' => $bookmarks
+        ]);
     }
 }
