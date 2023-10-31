@@ -18,7 +18,7 @@ defineProps({
 
         <div>
             <ul>
-                <li><a href="#">login</a></li>
+                <li><Link :href="route('login')">login</Link></li>
             </ul>
         </div>
 
