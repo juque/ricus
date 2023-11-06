@@ -12,7 +12,7 @@ class WelcomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $bookmarks = Bookmark::paginate(10);
+        $bookmarks = Bookmark::latest()->paginate(10);
         return inertia()->render('Welcome', [
           'bookmarks' => $bookmarks
         ]);
