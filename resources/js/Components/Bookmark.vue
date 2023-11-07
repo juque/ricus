@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
@@ -35,11 +36,13 @@ const createBookmark = () => {
                 <InputLabel for="title" value="Title" />
                 <TextInput
                     id="title"
+                    :message="form.errors.title"
                     v-model="form.title"
                     type="text"
                     class="mt-1 block w-full"
                     autocomplete="none"
                 />
+                <InputError class="mt-2" :message="form.errors.title" />
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="uri" value="URI" />
@@ -50,6 +53,7 @@ const createBookmark = () => {
                     class="mt-1 block w-full"
                     autocomplete="none"
                 />
+                <InputError class="mt-2" :message="form.errors.uri" />
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="description" value="Description" />
@@ -60,6 +64,7 @@ const createBookmark = () => {
                     class="mt-1 block w-full"
                     autocomplete="none"
                 />
+                <InputError class="mt-2" :message="form.errors.description" />
             </div>
         </template>
         <template #actions>
