@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Bookmark;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookmarkRequest;
@@ -12,7 +12,12 @@ class BookmarkController extends Controller
 
     public function index()
     {
-        return inertia()->render('Admin/Bookmark');
+        return inertia()->render('Bookmark/Index');
+    }
+
+    public function create()
+    {
+      return inertia()->render('Bookmark/Create');
     }
 
     public function store(BookmarkRequest $request)

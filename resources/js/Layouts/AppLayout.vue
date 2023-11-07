@@ -41,18 +41,18 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('bookmark.index')">
                                     <ApplicationMark class="block h-9 w-auto" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <NavLink :href="route('bookmark.index')" :active="route().current('bookmark.index')">
                                     Dashboard
                                 </NavLink>
-                                <NavLink :href="route('bookmark')" :active="route().current('bookmark')">
-                                   Bookmark
+                                <NavLink :href="route('bookmark.create')" :active="route().current('bookmark.create')">
+                                  New
                                 </NavLink>
                             </div>
                         </div>
@@ -194,7 +194,7 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                        <ResponsiveNavLink :href="route('bookmark.index')" :active="route().current('bookmark.index')">
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
