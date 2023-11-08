@@ -12,7 +12,8 @@ class BookmarkController extends Controller
 
     public function index()
     {
-        return inertia()->render('Bookmark/Index');
+        $bookmark = Bookmark::orderByDesc('created_at')->get();
+        return inertia()->render('Bookmark/Index', ['bookmark' => $bookmark]);
     }
 
     public function create()
