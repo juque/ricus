@@ -24,6 +24,6 @@ class BookmarkController extends Controller
     public function store(BookmarkRequest $request)
     {
         $bookmark = Bookmark::create($request->validated());
-        return redirect()->route('bookmark', $bookmark)->with('status', 'Registro creado');
+        return redirect()->route('bookmark.index', $bookmark)->with('status', 'Registro creado');
     }
 }
