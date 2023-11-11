@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class BookmarkController extends Controller
 {
-
     public function index()
     {
         $bookmark = Bookmark::orderByDesc('created_at')->get();
@@ -18,12 +17,13 @@ class BookmarkController extends Controller
 
     public function create()
     {
-      return inertia()->render('Bookmark/Create');
+        return inertia()->render('Bookmark/Create');
     }
 
     public function store(BookmarkRequest $request)
     {
         $bookmark = Bookmark::create($request->validated());
+        $bookmark->attachTags($request->tags);
         return redirect()->route('bookmark.index', $bookmark)->with('status', 'Registro creado');
     }
 }

@@ -8,7 +8,7 @@ use Spatie\Tags\HasTags;
 
 class Bookmark extends Model
 {
-    use HasFactory,HasTags;
+    use HasFactory, HasTags;
 
     protected $fillable = ['title', 'uri', 'description'];
 }

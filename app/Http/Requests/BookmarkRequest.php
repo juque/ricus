@@ -24,7 +24,8 @@ class BookmarkRequest extends FormRequest
         return [
             'title' => ['required'],
             'uri' => ['required'],
-            'description' => ['required']
+            'description' => ['required'],
+            'tags' => ['required']
         ];
     }
 }

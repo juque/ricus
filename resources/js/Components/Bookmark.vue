@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -9,17 +9,27 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
 const form = useForm({
-    title: '',
-    uri: '',
-    description: ''
+  title: '',
+  uri: '',
+  description: '',
+  tags: ''
 });
 
+watch(() => form.tags, (newValue, oldValue) => {
+  const processedTags = procesarTags(newValue);
+  form.tags = processedTags;
+});
+
+const procesarTags = (tags) => {
+  return tags.split(',').map(tag => tag.trim());
+};
+
 const createBookmark = () => {
-    form.post(route('bookmark.store'), {
-       errorBag: 'createBookmark',
-       preserveScroll: true,
-       onSuccess: () => {}
-    });
+  form.post(route('bookmark.store'), {
+    errorBag: 'createBookmark',
+    preserveScroll: true,
+    onSuccess: () => {}
+  });
 }
 
 </script>
@@ -65,6 +75,17 @@ const createBookmark = () => {
                     autocomplete="none"
                 />
                 <InputError class="mt-2" :message="form.errors.description" />
+            </div>
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="tags" value="Tags" />
+                <TextInput
+                    id="tags"
+                    v-model="form.tags"
+                    type="text"
+                    class="mt-1 block w-full"
+                    autocomplete="none"
+                />
+                <InputError class="mt-2" :message="form.errors.tags" />
             </div>
         </template>
         <template #actions>
