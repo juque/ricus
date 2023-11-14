@@ -12,7 +12,11 @@ class BookmarkController extends Controller
     public function index()
     {
         $bookmark = Bookmark::orderByDesc('created_at')->get();
-        return inertia()->render('Bookmark/Index', ['bookmark' => $bookmark]);
+        return inertia()->render('Bookmark/Index', [
+          'bookmark' => $bookmark,
+        ]
+          
+        );
     }
 
     public function create()

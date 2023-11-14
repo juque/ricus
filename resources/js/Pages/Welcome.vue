@@ -1,8 +1,15 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import TagList from '@/Components/TagList.vue';
+
+// import Componente from "./components/Componente.vue";
 
 defineProps({
-    bookmarks: Object
+    bookmarks: Object,
+    tagList: {
+      type: Object,
+      default: {}
+    }
 });
 
 </script>
@@ -39,12 +46,7 @@ defineProps({
 
             <h2 class="text-xl font-semibold">Tags</h2>
 
-            <ul>
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
-            </ul>
+            <TagList :tagList="tagList" />
 
         </div>
 
