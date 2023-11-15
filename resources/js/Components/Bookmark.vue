@@ -16,12 +16,13 @@ const form = useForm({
 });
 
 watch(() => form.tags, (newValue, oldValue) => {
-  const processedTags = procesarTags(newValue);
+  const processedTags = sanitizeTags(newValue);
   form.tags = processedTags;
 });
 
-const procesarTags = (tags) => {
-  return tags.split(',').map(tag => tag.trim());
+const sanitizeTags = (tags) => {
+  const re = /\s+|,\s*/;
+  return tags.split(re).filter(tag => tag !== '');
 };
 
 const createBookmark = () => {
