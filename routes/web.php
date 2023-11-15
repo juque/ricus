@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Bookmark\BookmarkController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', WelcomeController::class);
+Route::get('/', WelcomeController::class)->name('welcome');
+Route::get('/tag/{tag?}', TagController::class)->name('tag');
 
 Route::middleware([
       'auth:sanctum',

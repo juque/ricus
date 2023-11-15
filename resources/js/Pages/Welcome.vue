@@ -20,7 +20,7 @@ defineProps({
     <header class="p-2 bg-gray-100 flex justify-between">
 
         <div>
-            <h1 class="font-black text-3xl text-blue-600">ri.cu.s</h1>
+          <h1 class="font-black text-3xl text-blue-600"><Link href="/">ri.cu.s</Link></h1>
         </div>
 
         <div>

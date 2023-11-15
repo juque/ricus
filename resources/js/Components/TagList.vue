@@ -1,5 +1,5 @@
 <script setup>
-
+import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const props = defineProps ({
@@ -14,7 +14,7 @@ const props = defineProps ({
 <template>
   <div>
     <ul>
-      <li v-for="tag in tagList">{{ tag.name.en }} </li>
+      <li v-for="tag in tagList"><Link :href="`/tag/${tag.name.en}`">{{ tag.name.en }}</Link></li>
     </ul>
   </div>
 </template>
