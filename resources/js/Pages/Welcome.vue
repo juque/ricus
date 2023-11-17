@@ -36,7 +36,11 @@ defineProps({
         <div class="content w-5/6">
 
             <ul class="pl-3">
-                <li v-for="bookmark in bookmarks.data"><a class="text-lg text-blue-600" :href="`${bookmark.uri}`">{{ bookmark.title}}</a></li>
+              <li class="py-2" v-for="bookmark in bookmarks.data"><a class="text-lg text-blue-600" :href="`${bookmark.uri}`">{{ bookmark.title }}</a>
+                <ul class="flex flex-row space-x-1">
+                  <li v-for="tag in bookmark.tags"><Link :href="`/tag/${tag.name.en}`">{{ tag.name.en }}</Link></li>
+                </ul>
+              </li>
             </ul>
 
 
