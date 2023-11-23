@@ -1,8 +1,8 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import TagList from '@/Components/TagList.vue';
 
-// import Componente from "./components/Componente.vue";
+const page = usePage()
 
 defineProps({
     bookmarks: Object,
@@ -24,8 +24,14 @@ defineProps({
         </div>
 
         <div>
+
             <ul>
-                <li><Link :href="route('login')">login</Link></li>
+                <template v-if="page.props.auth.user">
+                  <li><Link :href="route('bookmark.index')">Dashboard</Link></li>
+                </template>
+                <template v-else>
+                  <li><Link :href="route('login')">login</Link></li>
+                </template>
             </ul>
         </div>
 

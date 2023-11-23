@@ -24,7 +24,7 @@ const props = defineProps ({
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <h1 class="font-bold text-xl">Home</h1>
                 <ul>
-                    <li v-for="row in bookmark">{{ row.id }}. <a class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" :href="row.uri">{{ row.title }}</a></li>
+                  <li v-for="row in bookmark">{{ row.id }}. <a class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" :href="row.uri">{{ row.title }}</a> - <a class="text-blue-600 underline" :href="route('bookmark.edit', row.id)">Edit</a></li>
                 </ul>
             </div>
         </div>

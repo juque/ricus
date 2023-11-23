@@ -19,5 +19,7 @@ Route::middleware([
 
         Route::get('/dashboard', [BookMarkController::class, 'index'])->name('bookmark.index');
         Route::get('/create', [BookMarkController::class, 'create'])->name('bookmark.create');
+        Route::get('/edit/{bookmark}', [BookMarkController::class, 'edit'])->name('bookmark.edit');
+        Route::put('/update/{bookmark}', [BookMarkController::class, 'update'])->name('bookmark.update');
         Route::post('/store', [BookMarkController::class, 'store'])->name('bookmark.store');
     });
