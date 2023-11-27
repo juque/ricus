@@ -22,4 +22,18 @@ class BookmarkTest extends TestCase
             $response->assertSee($bookmark->title);
         }
     }
+
+    public function testListTagsAtHome(): void
+    {
+      $tags = ['tag1', 'tag2', 'tag3'];
+
+      $bookmark = Bookmark::factory()->create();
+
+      $bookmark->attachTags($tags);
+
+      foreach($tags as $tag) {
+        $this->assertTrue($bookmark->tags->contains('name', $tag));
+      }
+
+    }
 }
