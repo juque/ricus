@@ -39,6 +39,7 @@ class BookmarkController extends Controller
     public function update(BookmarkRequest $request, Bookmark $bookmark) 
     {
       $bookmark->update($request->validated());
+      $bookmark->syncTags($request->tags);
       return redirect()->route('bookmark.index')->with('status', 'Registro actualizado');
     }
 }

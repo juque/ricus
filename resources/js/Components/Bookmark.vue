@@ -1,6 +1,7 @@
 <script setup>
 
 import { ref, watch } from 'vue';
+import sharedFuncions from '@/utils.js';
 import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
@@ -8,25 +9,23 @@ import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+const { sanitizeTags } = sharedFuncions();
+
 const form = useForm({
   title: '',
   uri: '',
   description: '',
-  tags: ''
+  tags: '' 
 });
 
-watch(() => form.tags, (newValue, oldValue) => {
-  const processedTags = sanitizeTags(newValue);
-  form.tags = processedTags;
-});
-
-const sanitizeTags = (tags) => {
-  const re = /\s+|,\s*/;
-  return tags.split(re).filter(tag => tag !== '');
-};
 
 const createBookmark = () => {
-  form.post(route('bookmark.store'), {
+  form
+    .transform(data => ({
+    ... data,
+    tags: sanitizeTags(form.tags)
+    })
+    ).post(route('bookmark.store'), {
     errorBag: 'createBookmark',
     preserveScroll: true,
     onSuccess: () => {}

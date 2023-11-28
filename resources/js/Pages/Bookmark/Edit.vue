@@ -1,11 +1,14 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
+import sharedFuncions from '@/utils.js';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import InputError from '@/Components/InputError.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+
+const { sanitizeTags } = sharedFuncions();
 
 const props = defineProps({
   bookmark: Object,
@@ -20,7 +23,12 @@ const form = useForm({
 });
 
 const updateBookmark = () => {
-  form.put(route('bookmark.update', props.bookmark.id), {
+  form
+    .transform(data => ({
+      ... data,
+      tags: sanitizeTags(form.tags)
+      })
+    ).put(route('bookmark.update', props.bookmark.id), {
     errorBag: 'updateBookmark',
     preserveScroll: true,
     onSuccess: () => {}
