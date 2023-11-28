@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', WelcomeController::class)->name('welcome');
-Route::get('/tag/{tag?}', TagController::class)->name('tag');
+Route::get('/tag/{tag}', TagController::class)->name('tag');
 
 Route::middleware([
       'auth:sanctum',
