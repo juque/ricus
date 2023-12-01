@@ -5,6 +5,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import InputError from '@/Components/InputError.vue';
+import Checkbox from '@/Components/Checkbox.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 
@@ -15,10 +16,12 @@ const props = defineProps({
   tags: Array
 })
 
+
 const form = useForm({
   title: props.bookmark.title,
   uri: props.bookmark.uri,
   description: props.bookmark.description,
+  private: props.bookmark.private ? true : false,
   tags: props.tags.map(x => x.name.en).join(" ")
 });
 
@@ -50,6 +53,19 @@ const updateBookmark = () => {
         <FormSection @submitted="updateBookmark">
           
           <template #form>
+
+            <div class="col-span-6 sm:col-span-4">
+              <label class="flex items-center">
+              <Checkbox 
+                 id="private"
+                 v-model:checked="form.private"
+              />
+              <span class="ml-2 ms-2 text-sm text-gray-600 dark:text-gray-400">
+                ¿Privado?
+              </span>
+              </label>
+            </div>
+
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="title" value="Title" />
                 <TextInput

@@ -6,6 +6,7 @@ import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import InputError from '@/Components/InputError.vue';
+import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
@@ -15,6 +16,7 @@ const form = useForm({
   title: '',
   uri: '',
   description: '',
+  private: '',
   tags: '' 
 });
 
@@ -42,6 +44,17 @@ const createBookmark = () => {
 
       <FormSection @submitted="createBookmark">
         <template #form>
+            <div class="col-span-6 sm:col-span-4">
+              <label class="flex items-center">
+              <Checkbox 
+                 id="private"
+                 v-model="form.private"
+              />
+              <span class="ml-2 ms-2 text-sm text-gray-600 dark:text-gray-400">
+                ¿Privado?
+              </span>
+              </label>
+            </div>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="title" value="Title" />
                 <TextInput
