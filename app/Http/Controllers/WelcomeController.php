@@ -11,7 +11,11 @@ class WelcomeController extends Controller
   public function __invoke(Request $request)
   {
     $tagList = Tag::all();
-    $bookmarks = Bookmark::with('tags')->latest()->paginate(10);
+
+    $bookmarks = auth()->check() 
+      ? Bookmark::with('tags')->latest()->paginate(10)
+      : Bookmark::public()->with('tags')->latest()->paginate(10);
+
     return inertia()->render('Welcome', [
       'bookmarks' => $bookmarks,
       'tagList'   => $tagList

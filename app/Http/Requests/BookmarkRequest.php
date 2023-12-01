@@ -25,6 +25,7 @@ class BookmarkRequest extends FormRequest
             'title' => ['required'],
             'uri' => ['required'],
             'description' => ['required'],
+            'private' => ['sometimes','nullable'],
             'tags' => ['required']
         ];
     }
