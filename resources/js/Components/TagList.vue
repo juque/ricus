@@ -13,8 +13,8 @@ const props = defineProps ({
 
 <template>
   <div>
-    <ul>
-      <li v-for="tag in tagList"><Link :href="`/tag/${tag.name.en}`">{{ tag.name.en }}</Link></li>
+    <ul class="flex flex-wrap gap-2">
+      <li class="inline-block" v-for="tag in tagList"><Link class="px-3 bg-blue-100 rounded-full text-blue-600 hover:bg-blue-200 transition duration-300" :href="`/tag/${tag.name.en}`">{{ tag.name.en }}</Link></li>
     </ul>
   </div>
 </template>
