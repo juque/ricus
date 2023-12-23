@@ -32,10 +32,10 @@ const props = defineProps({
     </header>
 
   <main class="sm:flex md:justify-between">
-  <div>
-    <h1>Tagged with: {{ tagged }}</h1>
-    <ul>
-      <li v-for="bookmark in bookmarks"><a class="text-blue-600" :href="`${bookmark.uri}`">{{ bookmark.title }}</a></li>
+  <div class="pl-2 pt-2">
+    <h1>Tagged with: <span class="font-bold">{{ tagged }}</span></h1>
+    <ul class="pt-2">
+      <li class="pb-3" v-for="bookmark in bookmarks"><a class="text-blue-600" :href="`${bookmark.uri}`">{{ bookmark.title }}</a></li>
     </ul>
   </div>
   </main>
