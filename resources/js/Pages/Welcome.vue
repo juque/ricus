@@ -39,7 +39,7 @@ defineProps({
 
     <main class="sm:flex md:justify-between">
 
-        <div class="content w-4/6">
+        <div class="content sm:w-1/2 md:w-2/3">
 
             <ul class="pl-3">
               <li class="py-2" v-for="bookmark in bookmarks.data">
@@ -50,10 +50,9 @@ defineProps({
               </li>
             </ul>
 
-
         </div>
 
-        <div class="tags pt-4 md:pt-2 pl-3 w-2/6">
+        <div class="tags sm:w-1/2 md:w-1/3 pt-4 md:pt-2 pl-3">
 
             <h2 class="text-xl font-semibold">Tags</h2>
 
