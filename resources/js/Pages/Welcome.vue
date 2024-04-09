@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import TagList from '@/Components/TagList.vue';
+import Pagination from '@/Shared/Pagination.vue';
 
 const page = usePage()
 
@@ -49,6 +50,8 @@ defineProps({
                 </ul>
               </li>
             </ul>
+
+            <pagination :links="bookmarks.links" />
 
         </div>
 
