@@ -13,8 +13,8 @@ class WelcomeController extends Controller
     $tagList = Tag::all();
 
     $bookmarks = auth()->check() 
-      ? Bookmark::with('tags')->latest()->paginate(10)
-      : Bookmark::public()->with('tags')->latest()->paginate(10);
+      ? Bookmark::with('tags')->latest()->paginate(3)
+      : Bookmark::public()->with('tags')->latest()->paginate(3);
 
     return inertia()->render('Welcome', [
       'bookmarks' => $bookmarks,
