@@ -22,12 +22,12 @@ class BookmarkController extends Controller
         return inertia()->render('Bookmark/Create');
     }
 
-    public function edit(Bookmark $bookmark) 
+    public function edit(Bookmark $bookmark)
     {
-      return inertia()->render('Bookmark/Edit', [
-        'bookmark' => $bookmark,
-        'tags' => $bookmark->tags
-      ]);
+        return inertia()->render('Bookmark/Edit', [
+          'bookmark' => $bookmark,
+          'tags' => $bookmark->tags
+        ]);
     }
 
     public function store(BookmarkRequest $request)
@@ -36,10 +36,10 @@ class BookmarkController extends Controller
         $bookmark->attachTags($request->tags);
         return redirect()->route('bookmark.index', $bookmark)->with('status', 'Registro creado');
     }
-    public function update(BookmarkRequest $request, Bookmark $bookmark) 
+    public function update(BookmarkRequest $request, Bookmark $bookmark)
     {
-      $bookmark->update($request->validated());
-      $bookmark->syncTags($request->tags);
-      return redirect()->route('bookmark.index')->with('status', 'Registro actualizado');
+        $bookmark->update($request->validated());
+        $bookmark->syncTags($request->tags);
+        return redirect()->route('bookmark.index')->with('status', 'Registro actualizado');
     }
 }
